@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>PIKER TAXI – Paragony kierowców</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #f1c40f;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    background: #111;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 450px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #222;
+    color: #f1c40f;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #f1c40f;
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #ffd900;
+}
+
+.logo img {
+    width: 180px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0px 0px 10px #f1c40f);
+}
+</style>
+
+</head>
+<body>
+
+<div class="logo">
+    <img src="piker.jpg" alt="PIKER TAXI">
+</div>
+
+<h2>Wysyłanie paragonów</h2>
+
+<div class="container">
+
+    <label>Imię i nazwisko kierowcy:</label>
+    <input id="driver" type="text" placeholder="np. Jan Kowalski">
+
+    <label>Zdjęcie paragonu:</label>
+    <input id="photo" type="file" accept="image/*">
+
+    <button onclick="sendReceipt()">WYŚLIJ PARAGON</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+    emailjs.init("5KvyyUC8LRY6rOq3H"); 
+})();
+
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
+
+async function sendReceipt() {
+    const driver = document.getElementById("driver").value;
+    const photoInput = document.getElementById("photo");
+    const file = photoInput.files[0];
+
+    if (!driver || !file) {
+        alert("Wpisz imię i nazwisko oraz dodaj zdjęcie paragonu.");
+        return;
+    }
+
+    const photoBase64 = await fileToBase64(file);
+
+    emailjs.send("g2vzfht", "8oq3myv", {
+        driver: driver,
+        photo: photoBase64
+    }).then(() => {
+        alert("Paragon wysłany!");
+    }, (error) => {
+        alert("Błąd wysyłania: " + JSON.stringify(error));
+    });
+}
+</script>
+
+</body>
+</html>
