@@ -82,7 +82,7 @@ button:hover {
     <label>Zdjęcie paragonu:</label>
     <input id="photo" type="file" accept="image/*">
 
-    <button onclick="sendReceipt()">WYŚLIJ PARAGON</button>
+    <button onclick="sendReceipt()">WYŚLIJ ZDJĘCIE</button>
 
 </div>
 
@@ -113,7 +113,7 @@ async function sendReceipt() {
 
     const photoBase64 = await fileToBase64(file);
 
-    emailjs.send("g2vzfht", "8oq3myv", {
+    emailjs.send("service_g2vzfht", "8oq3myv", {
         driver: driver,
         photo: photoBase64
     }).then(() => {
