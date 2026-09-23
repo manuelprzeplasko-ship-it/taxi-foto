@@ -107,13 +107,13 @@ async function sendReceipt() {
     const file = photoInput.files[0];
 
     if (!driver || !file) {
-        alert("Wpisz imię i nazwisko oraz dodaj zdjęcie paragonu.");
+        alert("Wpisz imię i nazwisko oraz dodaj zdjęcie.");
         return;
     }
 
     const photoBase64 = await fileToBase64(file);
 
-    emailjs.send("service_g2vzfht", "8oq3myv", {
+    emailjs.send("service_g2vzfht", "template_8oq3myv", {
         driver: driver,
         photo: photoBase64
     }).then(() => {
