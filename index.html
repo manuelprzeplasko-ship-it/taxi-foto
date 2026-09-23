@@ -72,14 +72,14 @@ button:hover {
     <img src="piker.jpg" alt="PIKER TAXI">
 </div>
 
-<h2>Wysyłanie paragonów</h2>
+<h2>Wysyłanie obrazów</h2>
 
 <div class="container">
 
     <label>Imię i nazwisko kierowcy:</label>
     <input id="driver" type="text" placeholder="np. Jan Kowalski">
 
-    <label>Zdjęcie paragonu:</label>
+    <label>Zdjęcia pojazdu:</label>
     <input id="photo" type="file" accept="image/*">
 
     <button onclick="sendReceipt()">WYŚLIJ ZDJĘCIE</button>
@@ -113,11 +113,11 @@ async function sendReceipt() {
 
     const photoBase64 = await fileToBase64(file);
 
-    emailjs.send("service_g2vzfht", "template_8oq3myv", {
+    emailjs.send("service_g2vzfht", "template_8te9aos", {
         driver: driver,
         photo: photoBase64
     }).then(() => {
-        alert("Paragon wysłany!");
+        alert("Zdjęcie wysłane!");
     }, (error) => {
         alert("Błąd wysyłania: " + JSON.stringify(error));
     });
