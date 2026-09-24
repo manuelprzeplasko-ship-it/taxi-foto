@@ -1,128 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<title>PIKER TAXI – Paragony kierowców</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>PIKER • Drogomierz 2.0</title>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #000;
-    color: #f1c40f;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-}
-
-.container {
-    background: #111;
-    padding: 25px;
-    border-radius: 12px;
-    max-width: 450px;
-    margin: auto;
-    margin-top: 30px;
-}
-
-label {
-    font-size: 18px;
-    display: block;
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: #222;
-    color: #f1c40f;
-    margin-bottom: 20px;
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    background: #f1c40f;
-    color: #000;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background: #ffd900;
-}
-
-.logo img {
-    width: 180px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0px 0px 10px #f1c40f);
-}
+:root{--yellow:#ffc400;--bg:#050505;--panel:#121212;--panel2:#1a1a1a;--text:#fff;--muted:#a8a8a8;--green:#20b85a;--red:#e33b3b;--line:#292929}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button{font:inherit}.app{width:min(100%,640px);margin:auto;padding:calc(10px + env(safe-area-inset-top)) 12px calc(18px + env(safe-area-inset-bottom))}.brand{text-align:center;padding:2px 0 8px}.brand img{display:block;width:min(72vw,360px);max-height:116px;object-fit:contain;margin:auto}.brand .sub{font-size:11px;letter-spacing:.18em;color:var(--yellow);font-weight:800;margin-top:2px}.panel{background:linear-gradient(180deg,#151515,#0f0f0f);border:1px solid var(--line);border-radius:20px;padding:14px;margin:10px 0;box-shadow:0 12px 30px #0008}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;color:var(--muted)}.meter{text-align:center;padding:18px 12px}.price{font-variant-numeric:tabular-nums;font-size:clamp(54px,17vw,94px);font-weight:950;line-height:.95;letter-spacing:-.05em;color:var(--yellow);white-space:nowrap}.price small{font-size:.32em;letter-spacing:0}.km{font-variant-numeric:tabular-nums;font-size:clamp(27px,8vw,42px);font-weight:900;margin-top:14px}.status{min-height:22px;color:var(--muted);font-size:13px;margin-top:8px}.tariffs{display:grid;gap:8px;margin-top:10px}.tariff{width:100%;border:2px solid #303030;background:#191919;color:#fff;border-radius:15px;padding:12px 13px;text-align:left;font-weight:900}.tariff span{display:block;font-size:16px}.tariff small{display:block;color:#b9b9b9;font-size:12px;font-weight:600;margin-top:3px;line-height:1.25}.tariff.active{border-color:var(--yellow);background:#211b00;box-shadow:inset 0 0 0 1px #ffc40044}.tariff:disabled{opacity:.58}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.btn{min-height:66px;border:0;border-radius:18px;color:#fff;font-size:19px;font-weight:950;box-shadow:0 8px 20px #0006}.start{background:var(--green)}.stop{background:var(--red)}.reset{grid-column:1/-1;background:#292929;color:var(--yellow);min-height:54px;font-size:16px}.btn:disabled{opacity:.35}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:var(--panel2);border:1px solid #242424;border-radius:14px;padding:11px}.stat b{display:block;font-size:17px;margin-top:4px;line-height:1.2}.mapbox{position:relative;height:190px;border-radius:18px;overflow:hidden;background:#181818;border:1px solid #2c2c2c;margin-top:10px}.mapgrid{position:absolute;inset:0;background:linear-gradient(30deg,transparent 49%,#262626 50%,transparent 51%) 0 0/52px 52px,linear-gradient(120deg,transparent 49%,#222 50%,transparent 51%) 0 0/66px 66px}.dot{position:absolute;left:50%;top:50%;width:18px;height:18px;border-radius:50%;background:#4285f4;border:4px solid white;transform:translate(-50%,-50%);box-shadow:0 0 0 8px #4285f433}.mapmsg{position:absolute;left:12px;right:12px;bottom:12px;background:#090909dd;border:1px solid #333;border-radius:12px;padding:9px 10px;font-size:12px;color:#ddd}.maplink{display:block;margin-top:9px;text-decoration:none;text-align:center;border:1px solid #333;background:#1b1b1b;color:#fff;border-radius:14px;padding:12px;font-weight:850}.foot{font-size:11px;color:#777;line-height:1.4;padding:4px 3px 0}.locked{color:var(--yellow)}
+@media (max-width:380px){.app{padding-left:8px;padding-right:8px}.panel{padding:11px}.btn{min-height:60px}.price{font-size:53px}}
 </style>
-
 </head>
 <body>
-
-<div class="logo">
-    <img src="piker.jpg" alt="PIKER TAXI">
-</div>
-
-<h2>Wysyłanie obrazów</h2>
-
-<div class="container">
-
-    <label>Imię i nazwisko kierowcy:</label>
-    <input id="driver" type="text" placeholder="np. Jan Kowalski">
-
-    <label>Zdjęcia pojazdu:</label>
-    <input id="photo" type="file" accept="image/*">
-
-    <button onclick="sendReceipt()">WYŚLIJ ZDJĘCIE</button>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<main class="app">
+<header class="brand"><img src="piker-logo.jpeg" alt="PIKER Przewozy Osobowe"><div class="sub">DROGOMIERZ 2.0</div></header>
+<section class="panel meter"><div class="eyebrow">Do zapłaty</div><div id="fare" class="price">0,00 <small>zł</small></div><div id="distance" class="km">0,000 km</div><div id="status" class="status">Wybierz taryfę i rozpocznij kurs</div></section>
+<section class="actions"><button id="start" class="btn start">▶ START KURSU</button><button id="stop" class="btn stop" disabled>■ ZAKOŃCZ</button><button id="reset" class="btn reset">↻ NOWY KURS / WYCZYŚĆ</button></section>
+<section class="panel"><div class="eyebrow">Taryfa przed rozpoczęciem kursu</div><div class="tariffs">
+<button class="tariff active" data-id="1"><span>1 • Dzienna 6–22</span><small>Opłata początkowa 8 zł • 4 zł/km</small></button>
+<button class="tariff" data-id="2"><span>2 • Nocna 22–6, Święta i niedziele</span><small>Opłata początkowa 8 zł • 5 zł/km</small></button>
+<button class="tariff" data-id="3"><span>3 • BMW premium</span><small>Opłata początkowa 30 zł • 6 zł/km</small></button>
+</div></section>
+<section class="panel stats"><div class="stat"><span class="eyebrow">Taryfa</span><b id="tariffName">Dzienna 6–22</b></div><div class="stat"><span class="eyebrow">Czas</span><b id="timer">00:00:00</b></div><div class="stat"><span class="eyebrow">Startowa</span><b id="base">8,00 zł</b></div><div class="stat"><span class="eyebrow">Za kilometr</span><b id="rate">4,00 zł/km</b></div></section>
+<section class="panel"><div class="eyebrow">Pozycja / Google Maps</div><div class="mapbox"><div class="mapgrid"></div><div class="dot"></div><div id="mapmsg" class="mapmsg">Po uruchomieniu kursu GPS będzie aktualizował Twoją pozycję.</div></div><a id="maps" class="maplink" href="https://www.google.com/maps" target="_blank" rel="noopener">OTWÓRZ POZYCJĘ W GOOGLE MAPS ↗</a></section>
+<p class="foot">GPS działa po HTTPS (np. GitHub Pages) po udzieleniu zgody na lokalizację. Pomiar z telefonu może różnić się od certyfikowanego taksometru; aplikacja jest pomocniczym drogomierzem i kalkulatorem ceny.</p>
+</main>
 <script>
-(function(){
-    emailjs.init("5KvyyUC8LRY6rOq3H"); 
-})();
-
-function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
-    });
-}
-
-async function sendReceipt() {
-    const driver = document.getElementById("driver").value;
-    const photoInput = document.getElementById("photo");
-    const file = photoInput.files[0];
-
-    if (!driver || !file) {
-        alert("Wpisz imię i nazwisko oraz dodaj zdjęcie.");
-        return;
-    }
-
-    const photoBase64 = await fileToBase64(file);
-
-    emailjs.send("service_g2vzfht", "template_8te9aos", {
-        driver: driver,
-        photo: photoBase64
-    }).then(() => {
-        alert("Zdjęcie wysłane!");
-    }, (error) => {
-        alert("Błąd wysyłania: " + JSON.stringify(error));
-    });
-}
+const tariffs={1:{name:'Dzienna 6–22',base:8,rate:4},2:{name:'Nocna 22–6, Święta i niedziele',base:8,rate:5},3:{name:'BMW premium',base:30,rate:6}};
+const STORAGE='piker-drogomierz-v2-state';
+let tariffId=1,running=false,finished=false,watchId=null,lastPoint=null,km=0,startedAt=null,timerId=null,wakeLock=null;
+const $=id=>document.getElementById(id);const money=n=>n.toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2});
+function save(){localStorage.setItem(STORAGE,JSON.stringify({tariffId,running,finished,lastPoint,km,startedAt}))}
+function restore(){try{const x=JSON.parse(localStorage.getItem(STORAGE)||'null');if(!x)return;tariffId=x.tariffId||1;running=!!x.running;finished=!!x.finished;lastPoint=x.lastPoint||null;km=Number(x.km)||0;startedAt=x.startedAt||null}catch(e){}}
+function fare(){const t=tariffs[tariffId];return running||finished?t.base+km*t.rate:0}
+function update(){const t=tariffs[tariffId];$('fare').innerHTML=money(fare())+' <small>zł</small>';$('distance').textContent=km.toLocaleString('pl-PL',{minimumFractionDigits:3,maximumFractionDigits:3})+' km';$('tariffName').textContent=t.name;$('base').textContent=money(t.base)+' zł';$('rate').textContent=money(t.rate)+' zł/km';document.querySelectorAll('.tariff').forEach(b=>b.classList.toggle('active',+b.dataset.id===tariffId))}
+function choose(id){if(running||finished)return;tariffId=+id;save();update()}
+document.querySelectorAll('.tariff').forEach(b=>b.onclick=()=>choose(b.dataset.id));
+function distance(a,b){const R=6371,rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLon=rad(b.lng-a.lng),q=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(q))}
+async function keepAwake(){if(!running||document.visibilityState!=='visible'||!('wakeLock' in navigator))return;try{wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null})}catch(e){}}
+async function releaseAwake(){try{if(wakeLock)await wakeLock.release()}catch(e){}wakeLock=null}
+function startGps(){if(!running||watchId!==null||!navigator.geolocation)return;watchId=navigator.geolocation.watchPosition(onPos,onErr,{enableHighAccuracy:true,maximumAge:500,timeout:15000})}
+function stopGps(){if(watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(watchId);watchId=null}
+function onPos(p){if(!running)return;const point={lat:p.coords.latitude,lng:p.coords.longitude,acc:p.coords.accuracy};$('maps').href=`https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;$('mapmsg').textContent=`GPS: ${point.lat.toFixed(5)}, ${point.lng.toFixed(5)} • dokładność ±${Math.round(point.acc)} m`;if(point.acc>60){$('status').textContent=`Słaby sygnał GPS • ±${Math.round(point.acc)} m`;return}if(lastPoint){const d=distance(lastPoint,point);if(d>=0.005&&d<1)km+=d}lastPoint=point;$('status').textContent=`Kurs trwa • zapis automatyczny • GPS ±${Math.round(point.acc)} m`;save();update()}
+function onErr(e){$('status').textContent='Błąd GPS: '+e.message;$('mapmsg').textContent='Sprawdź zgodę na lokalizację oraz połączenie HTTPS.'}
+function tick(){if(!startedAt)return;const s=Math.floor((Date.now()-startedAt)/1000);$('timer').textContent=[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,'0')).join(':')}
+function lock(v){document.querySelectorAll('.tariff').forEach(b=>b.disabled=v)}
+function syncButtons(){lock(running||finished);$('start').disabled=running||finished;$('stop').disabled=!running}
+$('start').onclick=async()=>{if(!navigator.geolocation){$('status').textContent='Ta przeglądarka nie obsługuje GPS.';return}running=true;finished=false;km=0;lastPoint=null;startedAt=Date.now();syncButtons();$('status').innerHTML='Uruchamianie GPS… <span class="locked">taryfa zablokowana</span>';save();update();tick();clearInterval(timerId);timerId=setInterval(tick,1000);startGps();await keepAwake()};
+$('stop').onclick=async()=>{running=false;finished=true;stopGps();clearInterval(timerId);await releaseAwake();syncButtons();$('status').textContent='Kurs zakończony • kwota końcowa';$('mapmsg').textContent+=' • kurs zakończony';save();update()};
+$('reset').onclick=async()=>{stopGps();clearInterval(timerId);await releaseAwake();running=false;finished=false;lastPoint=null;km=0;startedAt=null;$('timer').textContent='00:00:00';syncButtons();$('status').textContent='Wybierz taryfę i rozpocznij kurs';$('mapmsg').textContent='Po uruchomieniu kursu GPS będzie aktualizował Twoją pozycję.';$('maps').href='https://www.google.com/maps';save();update()};
+document.addEventListener('visibilitychange',async()=>{if(document.visibilityState==='visible'&&running){startGps();await keepAwake();$('status').textContent='Kurs wznowiony • dane zachowane';tick()}else if(document.visibilityState==='hidden'){save();stopGps()}});
+window.addEventListener('pagehide',save);window.addEventListener('beforeunload',save);
+restore();update();syncButtons();if(running){$('status').textContent='Kurs przywrócony • uruchamiam GPS';tick();timerId=setInterval(tick,1000);startGps();keepAwake()}else if(finished){$('status').textContent='Kurs zakończony • kwota końcowa'}
 </script>
-
-</body>
-</html>
+</body></html>
